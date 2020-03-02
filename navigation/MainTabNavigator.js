@@ -14,17 +14,6 @@ const config = Platform.select({
   default: {},
 });
 
-const LoginStack = createStackNavigator(
-  {
-    Login: LoginScreen,
-  },
-  config
-);
-
-LoginStack.navigationOptions = {
-  header: null,
-}
-
 const HomeStack = createStackNavigator(
   {
     Home: HomeScreen,
@@ -39,51 +28,87 @@ HomeStack.navigationOptions = {
       focused={focused}
       name={
         Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
+          ? `ios-home`
+          : 'md-home'
       }
     />
-  ),
+  )
 };
 
 HomeStack.path = '';
 
-const LinksStack = createStackNavigator(
+const CameraStack = createStackNavigator(
   {
     Links: LinksScreen,
   },
   config
 );
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+CameraStack.navigationOptions = {
+  tabBarLabel: 'Camera',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-camera' : 'md-camera'} />
   ),
 };
 
-LinksStack.path = '';
+CameraStack.path = '';
 
-const SettingsStack = createStackNavigator(
+const PostStack = createStackNavigator(
+  {
+    Links: LinksScreen,
+  },
+  config
+);
+
+PostStack.navigationOptions = {
+  tabBarLabel: 'Post',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-add-circle' : 'md-add-circle'} />
+  ),
+};
+
+PostStack.path = '';
+
+
+const FavoriteStack = createStackNavigator(
+  {
+    Links: LinksScreen,
+  },
+  config
+);
+
+FavoriteStack.navigationOptions = {
+  tabBarLabel: 'Favorite',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-heart' : 'md-heart'} />
+  ),
+};
+
+FavoriteStack.path = '';
+
+
+const AccountStack = createStackNavigator(
   {
     Settings: SettingsScreen,
   },
   config
 );
 
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+AccountStack.navigationOptions = {
+  tabBarLabel: 'Account',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-person' : 'md-person'} />
   ),
 };
 
-SettingsStack.path = '';
+AccountStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
-  LinksStack,
-  SettingsStack,
+  CameraStack,
+  PostStack,
+  FavoriteStack,
+  AccountStack,
 });
 
 tabNavigator.path = '';
