@@ -2,11 +2,11 @@ import React from 'react';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 
 import MainTabNavigator from './MainTabNavigator';
-import LoginScreen from '../screens/LoginScreen';
+import {Provider} from 'react-redux';
+import store from '../store';
 
-export default createAppContainer(
+const AppContainer = createAppContainer(
   createSwitchNavigator({
-    // Login: { screen: LoginScreen },
     Main: MainTabNavigator,
   }, {
     navigationOptions: () => ({
@@ -17,3 +17,15 @@ export default createAppContainer(
     })
   })
 );
+
+class AppNavigator extends React.Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <AppContainer/>
+      </Provider>
+    )
+  }
+}
+
+export default AppNavigator
