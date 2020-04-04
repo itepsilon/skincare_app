@@ -65,17 +65,20 @@ function loginFail(message) {
 export function login(username, password) {
     return function (dispatch) {
         dispatch(loginRequest());
-        return fetch(`${url}/api/token`, {
-            method: 'POST',
+        return fetch(`${url}/api/token/`, {
+            method: "POST",
             headers: {
                 'Content-Type': 'application/json'
             },
+            redirect: 'follow',
             body: JSON.stringify({username, password})
         }).then(response => {
             if (response.status >= 400) {
                 dispatch(loginFail("Bad response from server"));
             }
             return response.json();
-        }).then(payload => dispatch(loginSuccess(payload)));
+        }).then(payload => {
+            dispatch(loginSuccess(payload));
+        }).catch(err => console.log(err));
     }
 }

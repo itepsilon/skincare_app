@@ -13,12 +13,12 @@ function products(state = { pending: false, products: [], err: false }, action) 
     }
 }
 
-function auth(state={}, action) {
+function auth(state={access: "", refresh: ""}, action) {
     switch(action.type) {
         case 'LOGIN_REQUEST':
             return { ...state, pending: true }
         case 'LOGIN_SUCCESS':
-            return { ...state, pending: false, tokens: action.payload }
+            return { ...state, pending: false, access: action.payload.access, refresh: action.payload.refresh }
         case 'LOGIN_ERROR':
             return { ...state, pending: false, err: action.payload }
         default:

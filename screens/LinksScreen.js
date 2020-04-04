@@ -1,13 +1,14 @@
 import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet, Text } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
 import LoginScreen from './LoginScreen';
+import { connect } from 'react-redux';
 
-export default class LinksScreen extends React.Component {
+class LinksScreen extends React.Component {
     render() {
         return (
             <ScrollView style={styles.container}>
-                <LoginScreen />
+                {this.props.accessToken ? <Text>You are logged in~</Text> : <LoginScreen />}
             </ScrollView>
         );
     }
@@ -24,3 +25,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
 });
+
+const mapStateToProps = state => ({ accessToken: state.auth.access || null })
+
+export default connect(mapStateToProps, null)(LinksScreen);
