@@ -28,4 +28,4 @@ class AppNavigator extends React.Component {
   }
 }
 
-export default AppNavigator
+export default AppNavigator;

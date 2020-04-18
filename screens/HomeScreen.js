@@ -8,6 +8,8 @@ import {
     View,
     Text
 } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+
 import { SearchBar } from 'react-native-elements';
 import { ListItem } from 'react-native-elements'
 import { connect } from 'react-redux';
@@ -24,10 +26,6 @@ class HomeScreen extends React.Component {
                 <ScrollView
                     style={styles.container}
                     contentContainerStyle={styles.contentContainer}>
-                    {/* <SearchBar
-                    placeholder="Search"
-                    onChangeText={() => { }}
-                /> */}
                     <View>
                         {
                             this.props.products.map((l, i) => (
@@ -37,6 +35,7 @@ class HomeScreen extends React.Component {
                                     title={<Text style={{ fontWeight: 'bold', fontSize: 16, color: 'blue' }}>{l.name}</Text>}
                                     subtitle={<Text numberOfLines={3}>{l.description}</Text>}
                                     bottomDivider
+                                    rightIcon={<Icon name='heart' size={30} color="blue" />}
                                 />
                             ))
                         }

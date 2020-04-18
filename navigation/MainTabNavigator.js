@@ -7,6 +7,8 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import FavoriteScreen from '../screens/FavoriteScreen';
+import AccountScreen from '../screens/AccountScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -71,7 +73,7 @@ PostStack.path = '';
 
 const FavoriteStack = createStackNavigator(
   {
-    Links: LinksScreen,
+    Links: FavoriteScreen,
   },
   config
 );
@@ -88,7 +90,7 @@ FavoriteStack.path = '';
 
 const AccountStack = createStackNavigator(
   {
-    Settings: SettingsScreen,
+    Settings: AccountScreen,
   },
   config
 );

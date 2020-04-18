@@ -6,6 +6,9 @@ import { connect } from 'react-redux';
 
 class LinksScreen extends React.Component {
     render() {
+        if (!this.props.accessToken) {
+            return <LoginScreen />;
+        }
         return (
             <ScrollView style={styles.container}>
                 {this.props.accessToken ? <Text>You are logged in~</Text> : <LoginScreen />}

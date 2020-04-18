@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Alert, Button, TextInput, View, StyleSheet, Image } from 'react-native';
+import { Alert, TextInput, View, StyleSheet, Image } from 'react-native';
+import { Button } from 'react-native-elements';
+
 import logo from '../assets/images/splash.png';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
@@ -28,6 +30,7 @@ class LoginScreen extends Component {
                     value={this.state.username}
                     onChangeText={(username) => this.setState({ username })}
                     placeholder={'Username'}
+                    autoCapitalize = 'none'
                     style={styles.input}
                 />
                 <TextInput
@@ -35,12 +38,13 @@ class LoginScreen extends Component {
                     onChangeText={(password) => this.setState({ password })}
                     placeholder={'Password'}
                     secureTextEntry={true}
+                    autoCapitalize = 'none'
                     style={styles.input}
                 />
 
                 <Button
                     title={'Login'}
-                    style={styles.input}
+                    raised
                     onPress={this.onLogin}
                 />
             </View>
